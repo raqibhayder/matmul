@@ -91,7 +91,7 @@ body {
   gap: 0;
   margin-right: 10px;
   vertical-align: middle;
-  animation: mark-breathe 4s ease-in-out infinite;
+  animation: mark-breathe 4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
 }
 
 .matmul-mark > * {
@@ -100,7 +100,7 @@ body {
 
 @keyframes mark-breathe {
   0%, 100% { transform: scale(1); opacity: 0.85; }
-  50%      { transform: scale(1.15); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 1; }
 }
 
 /* ── Section label ─────────────────────────── */
@@ -121,20 +121,22 @@ body {
 
 .work-row {
   border-top: 1px solid var(--border);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .work-row:last-child {
   border-bottom: 1px solid var(--border);
 }
 
-.work-row:hover {
-  background: var(--accent-glow);
-  border-color: var(--border-hover);
-}
+@media (hover: hover) and (pointer: fine) {
+  .work-row:hover {
+    background: var(--accent-glow);
+    border-color: var(--border-hover);
+  }
 
-.work-row:hover + .work-row {
-  border-top-color: var(--border-hover);
+  .work-row:hover + .work-row {
+    border-top-color: var(--border-hover);
+  }
 }
 
 .work-row.dimmed {
@@ -146,12 +148,14 @@ body {
 .card {
   background: var(--bg-raised);
   border: 1px solid var(--border);
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: border-color 0.25s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.card:hover {
-  border-color: var(--border-hover);
-  box-shadow: 0 0 40px rgba(232, 85, 58, 0.04);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: var(--border-hover);
+    box-shadow: 0 0 40px rgba(232, 85, 58, 0.04);
+  }
 }
 
 /* ── Pull quote accent ─────────────────────── */
@@ -181,7 +185,7 @@ body {
 }
 
 .float {
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s cubic-bezier(0.23, 1, 0.32, 1) infinite;
   display: inline-block;
 }
 
@@ -202,19 +206,15 @@ body {
 .reveal-d3 { animation-delay: 0.3s; }
 .reveal-d4 { animation-delay: 0.4s; }
 
-/* ── Labs wordmark animation ───────────────── */
+/* ── Labs wordmark glow ───────────────────── */
 
-.labs-cycle {
-  display: inline-block;
-  animation: cycle-variant 6s steps(1) infinite;
-  font-family: var(--font-geist-pixel-square);
+.labs-glow {
+  animation: glow-pulse 6s ease-in-out infinite;
 }
 
-@keyframes cycle-variant {
-  0%, 25%   { font-family: var(--font-geist-pixel-square); }
-  25%, 50%  { font-family: var(--font-geist-pixel-circle); }
-  50%, 75%  { font-family: var(--font-geist-pixel-grid); }
-  75%, 100% { font-family: var(--font-geist-pixel-triangle); }
+@keyframes glow-pulse {
+  0%, 100% { color: #d8d4cb; }
+  50%      { color: #e8553a; }
 }
 
 /* ── Divider ───────────────────────────────── */
@@ -222,4 +222,13 @@ body {
 .divider {
   height: 1px;
   background: var(--border);
+}
+
+/* ── Reduced motion ───────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .matmul-mark { animation: none; opacity: 1; }
+  .float { animation: none; }
+  .reveal { animation: none; opacity: 1; }
+  .labs-cycle { animation: none; }
 }

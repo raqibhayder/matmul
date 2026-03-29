@@ -2,45 +2,20 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const PIXEL_FONTS = [
-  '--font-geist-pixel-square',
-  '--font-geist-pixel-circle',
-  '--font-geist-pixel-grid',
-  '--font-geist-pixel-triangle',
-];
-
-const BG_COLORS = [
-  'rgba(255, 255, 255, 0.05)',
-  'rgba(232, 85, 58, 0.065)',
-  'rgba(255, 255, 255, 0.04)',
-  'rgba(232, 85, 58, 0.055)',
-];
-
-const LABS_COLORS = [
-  '#e8553a',                       // accent
-  '#d8d4cb',                       // text
-  'rgba(216, 212, 203, 0.35)',     // text-dim
-  'rgba(216, 212, 203, 0.6)',      // text-mid
-];
+const BG_COLOR = 'rgba(255, 255, 255, 0.04)';
 
 const WORK = [
-  { num: '01', client: 'Agricultural producer', geo: 'DE / CA', scope: 'Visual defect detection + chemical profiling', impact: '~200 hrs/mo saved' },
-  { num: '02', client: 'Pharma -clinical trials', geo: 'US', scope: 'EDC extraction from medical records', impact: '2 FTEs automated' },
-  { num: '03', client: 'Construction developer', geo: 'Toronto', scope: 'Pay application reconciliation', impact: '3 FTEs automated' },
-  { num: '04', client: 'Legal tech startup', geo: '', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
-];
+  { num: '01', client: 'Agricultural producer', geo: 'Germany / Canada', scope: 'Visual defect detection + chemical' +
+      ' profiling', impact: '~200 hrs/mo saved' },
+  { num: '02', client: 'Pharma - clinical trials', geo: 'US', scope: 'EDC extraction from medical records', impact: '2 FTEs automated' },
+  { num: '03', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation', impact: '3 FTEs automated' },
+  { num: '04', client: 'Legal tech startup', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
+  { num: '05', client: '', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
+]
 
 export default function Home() {
   const [hovered, setHovered] = useState<number | null>(null);
-  const [variantIdx, setVariantIdx] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setVariantIdx(i => (i + 1) % PIXEL_FONTS.length);
-    }, 4000);
-    return () => clearInterval(id);
-  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -59,11 +34,11 @@ export default function Home() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const fontFamily = getComputedStyle(document.documentElement)
-        .getPropertyValue(PIXEL_FONTS[variantIdx]).trim();
+        .getPropertyValue('--font-geist-pixel-square').trim();
 
       ctx.clearRect(0, 0, w, h);
       ctx.font = `4px ${fontFamily}`;
-      ctx.fillStyle = BG_COLORS[variantIdx];
+      ctx.fillStyle = BG_COLOR;
       ctx.textBaseline = 'top';
 
       const spacing = 5;
@@ -77,7 +52,7 @@ export default function Home() {
     draw();
     window.addEventListener('resize', draw);
     return () => window.removeEventListener('resize', draw);
-  }, [variantIdx]);
+  }, []);
 
   return (
     <div className="min-h-screen relative">
@@ -98,7 +73,7 @@ export default function Home() {
               <div style={{ background: '#eba86a' }} />
               <div style={{ background: '#f5d4a0' }} />
             </div>
-            <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span style={{ color: LABS_COLORS[variantIdx], transition: 'color 1.5s ease' }}>labs</span></span>
+            <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span className="labs-glow">labs</span></span>
           </div>
           <nav style={{ fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-mid)', textTransform: 'uppercase' as const }}>
             SF / NY / Toronto / London / Dubai
@@ -125,10 +100,10 @@ export default function Home() {
           style={{ color: 'var(--text)', opacity: 0.7, paddingBottom: '5rem', fontSize: '16px' }}
         >
           <p style={{ marginBottom: '1rem' }}>
-            An applied AI lab. Engineers who build, domain experts who&apos;ve done your job before. No sales team.
+            We are an applied AI lab. Our team consists of domain experts and engineers. No sales team.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            If your industry spends more on people than software, that&apos;s where we come in. We don&apos;t do defense.
+            If your company spends more on people than software, that&apos;s where we come in.
           </p>
           <p>
             If you need it working by next month,{' '}
