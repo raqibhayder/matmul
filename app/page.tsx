@@ -93,10 +93,10 @@ export default function Home() {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <div className="matmul-mark">
-              <div style={{ background: '#c84535' }} />
-              <div style={{ background: '#e8883a' }} />
-              <div style={{ background: '#e8a868' }} />
-              <div style={{ background: '#f0c898' }} />
+              <div style={{ background: '#d4562e' }} />
+              <div style={{ background: '#eb8f3a' }} />
+              <div style={{ background: '#eba86a' }} />
+              <div style={{ background: '#f5d4a0' }} />
             </div>
             <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span style={{ color: LABS_COLORS[variantIdx], transition: 'color 1.5s ease' }}>labs</span></span>
           </div>
@@ -116,7 +116,7 @@ export default function Home() {
             fontWeight: 700,
             color: 'var(--accent)',
           }}>
-            WE BUILD AI SYSTEMS FOR COMPANIES WHO&apos;VE ALREADY TRIED THE OTHER WAY.
+            We build AI systems for companies who&apos;ve already tried the other way.
           </h1>
         </section>
 
