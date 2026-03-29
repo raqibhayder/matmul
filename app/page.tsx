@@ -92,11 +92,12 @@ export default function Home() {
       <header className="relative z-10 page-pad" style={{ paddingTop: '1.5rem', paddingBottom: '1rem' }}>
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <span className="matmul-mark">
-              <span className="dot dot-a font-pixel">■</span>
-              <span className="dot dot-b font-pixel">■</span>
-              <span className="dot dot-c font-pixel">■</span>
-            </span>
+            <div className="matmul-mark">
+              <div style={{ background: '#c84535' }} />
+              <div style={{ background: '#e8883a' }} />
+              <div style={{ background: '#e8a868' }} />
+              <div style={{ background: '#f0c898' }} />
+            </div>
             <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span style={{ color: LABS_COLORS[variantIdx], transition: 'color 1.5s ease' }}>labs</span></span>
           </div>
           <nav style={{ fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-mid)', textTransform: 'uppercase' as const }}>
@@ -152,22 +153,22 @@ export default function Home() {
               >
                 <div className="flex items-baseline justify-between" style={{ gap: '1.5rem' }}>
                   <div className="flex items-baseline" style={{ gap: '0.75rem', minWidth: 0 }}>
-                    <span style={{ fontSize: '11px', color: 'var(--accent)', flexShrink: 0 }}>
+                    <span style={{ fontSize: '14px', color: 'var(--accent)', flexShrink: 0 }}>
                       {item.num}
                     </span>
                     <div>
                       <div className="flex flex-wrap items-baseline" style={{ gap: '0.5rem' }}>
-                        <span style={{ fontSize: '16px' }}>{item.client}</span>
+                        <span style={{ fontSize: '20px' }}>{item.client}</span>
                         {item.geo && (
-                          <span style={{ fontSize: '10px', color: 'var(--text-dim)' }}>{item.geo}</span>
+                          <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>{item.geo}</span>
                         )}
                       </div>
-                      <div style={{ fontSize: '11px', color: 'var(--text-dim)', marginTop: '2px' }}>
+                      <div style={{ fontSize: '14px', color: 'var(--text-dim)', marginTop: '3px' }}>
                         {item.scope}
                       </div>
                     </div>
                   </div>
-                  <span className="hidden md:block" style={{ fontSize: '11px', color: 'var(--accent)', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                  <span className="hidden md:block" style={{ fontSize: '14px', color: 'var(--accent)', flexShrink: 0, whiteSpace: 'nowrap' }}>
                     {item.impact}
                   </span>
                 </div>

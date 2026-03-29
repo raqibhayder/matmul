@@ -85,59 +85,22 @@ body {
 /* ── Matmul logo mark ─────────────────────── */
 
 .matmul-mark {
-  display: inline-flex;
-  position: relative;
-  width: 22px;
-  height: 14px;
+  display: inline-grid;
+  grid-template-columns: 7px 7px;
+  grid-template-rows: 7px 7px;
+  gap: 0;
   margin-right: 10px;
   vertical-align: middle;
-  font-size: 11px;
-  line-height: 1;
+  animation: mark-breathe 4s ease-in-out infinite;
 }
 
-.matmul-mark .dot-a {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  color: var(--text-mid);
-  animation: merge-a 4s ease-in-out infinite;
+.matmul-mark > * {
+  display: block;
 }
 
-.matmul-mark .dot-b {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  color: var(--text-mid);
-  animation: merge-b 4s ease-in-out infinite;
-}
-
-.matmul-mark .dot-c {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  color: var(--accent);
-  opacity: 0;
-  animation: merge-c 4s ease-in-out infinite;
-}
-
-@keyframes merge-a {
-  0%, 25%   { opacity: 1; transform: translateY(-50%) translateX(0); }
-  40%       { opacity: 0; transform: translateY(-50%) translateX(7px); }
-  75%       { opacity: 0; transform: translateY(-50%) translateX(7px); }
-  90%, 100% { opacity: 1; transform: translateY(-50%) translateX(0); }
-}
-
-@keyframes merge-b {
-  0%, 25%   { opacity: 1; transform: translateY(-50%) translateX(0); }
-  40%       { opacity: 0; transform: translateY(-50%) translateX(-7px); }
-  75%       { opacity: 0; transform: translateY(-50%) translateX(-7px); }
-  90%, 100% { opacity: 1; transform: translateY(-50%) translateX(0); }
-}
-
-@keyframes merge-c {
-  0%, 35%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-  45%, 70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: drop-shadow(0 0 4px var(--accent)); }
-  82%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+@keyframes mark-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50%      { transform: scale(1.15); opacity: 1; }
 }
 
 /* ── Section label ─────────────────────────── */
