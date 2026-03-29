@@ -1,26 +1,257 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --font-pixel: var(--font-geist-pixel-square);
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --accent: #e8553a;
+  --accent-glow: rgba(232, 85, 58, 0.12);
+  --bg: #0c0c0b;
+  --bg-raised: #131312;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.1);
+  --text: #d8d4cb;
+  --text-dim: rgba(216, 212, 203, 0.35);
+  --text-mid: rgba(216, 212, 203, 0.6);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-pixel);
+  overflow-x: hidden;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.font-serif { font-family: var(--font-serif); }
+.font-pixel { font-family: var(--font-pixel); }
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ── Layout ────────────────────────────────── */
+
+.page-pad {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* ── Noise ─────────────────────────────────── */
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 100;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── Grid lines ────────────────────────────── */
+
+.grid-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+}
+
+/* ── Pixel font variants ───────────────────── */
+
+.font-pixel-circle { font-family: var(--font-geist-pixel-circle); }
+.font-pixel-grid { font-family: var(--font-geist-pixel-grid); }
+.font-pixel-triangle { font-family: var(--font-geist-pixel-triangle); }
+
+/* ── Matmul logo mark ─────────────────────── */
+
+.matmul-mark {
+  display: inline-flex;
+  position: relative;
+  width: 22px;
+  height: 14px;
+  margin-right: 10px;
+  vertical-align: middle;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.matmul-mark .dot-a {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  color: var(--text-mid);
+  animation: merge-a 4s ease-in-out infinite;
+}
+
+.matmul-mark .dot-b {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  color: var(--text-mid);
+  animation: merge-b 4s ease-in-out infinite;
+}
+
+.matmul-mark .dot-c {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: var(--accent);
+  opacity: 0;
+  animation: merge-c 4s ease-in-out infinite;
+}
+
+@keyframes merge-a {
+  0%, 25%   { opacity: 1; transform: translateY(-50%) translateX(0); }
+  40%       { opacity: 0; transform: translateY(-50%) translateX(7px); }
+  75%       { opacity: 0; transform: translateY(-50%) translateX(7px); }
+  90%, 100% { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+@keyframes merge-b {
+  0%, 25%   { opacity: 1; transform: translateY(-50%) translateX(0); }
+  40%       { opacity: 0; transform: translateY(-50%) translateX(-7px); }
+  75%       { opacity: 0; transform: translateY(-50%) translateX(-7px); }
+  90%, 100% { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+@keyframes merge-c {
+  0%, 35%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  45%, 70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); filter: drop-shadow(0 0 4px var(--accent)); }
+  82%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+}
+
+/* ── Section label ─────────────────────────── */
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+}
+
+.section-label::before {
+  content: '//';
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+/* ── Work items ────────────────────────────── */
+
+.work-row {
+  border-top: 1px solid var(--border);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-row:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.work-row:hover {
+  background: var(--accent-glow);
+  border-color: var(--border-hover);
+}
+
+.work-row:hover + .work-row {
+  border-top-color: var(--border-hover);
+}
+
+.work-row.dimmed {
+  opacity: 0.15;
+}
+
+/* ── Cards ─────────────────────────────────── */
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 40px rgba(232, 85, 58, 0.04);
+}
+
+/* ── Pull quote accent ─────────────────────── */
+
+.pull-quote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.25rem;
+}
+
+/* ── Link ──────────────────────────────────── */
+
+.link-accent {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.link-accent:hover {
+  opacity: 0.7;
+}
+
+/* ── Float ─────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* ── Entrance animations ───────────────────── */
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.reveal-d1 { animation-delay: 0.1s; }
+.reveal-d2 { animation-delay: 0.2s; }
+.reveal-d3 { animation-delay: 0.3s; }
+.reveal-d4 { animation-delay: 0.4s; }
+
+/* ── Labs wordmark animation ───────────────── */
+
+.labs-cycle {
+  display: inline-block;
+  animation: cycle-variant 6s steps(1) infinite;
+  font-family: var(--font-geist-pixel-square);
+}
+
+@keyframes cycle-variant {
+  0%, 25%   { font-family: var(--font-geist-pixel-square); }
+  25%, 50%  { font-family: var(--font-geist-pixel-circle); }
+  50%, 75%  { font-family: var(--font-geist-pixel-grid); }
+  75%, 100% { font-family: var(--font-geist-pixel-triangle); }
+}
+
+/* ── Divider ───────────────────────────────── */
+
+.divider {
+  height: 1px;
+  background: var(--border);
 }
