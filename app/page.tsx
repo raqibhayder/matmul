@@ -1,17 +1,31 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const BG_STATES = [
-  { size: 60, opacity: 0.018, color: '255, 255, 255' },
-  { size: 48, opacity: 0.025, color: '232, 85, 58' },
-  { size: 72, opacity: 0.015, color: '255, 255, 255' },
-  { size: 54, opacity: 0.022, color: '232, 85, 58' },
+const PIXEL_FONTS = [
+  '--font-geist-pixel-square',
+  '--font-geist-pixel-circle',
+  '--font-geist-pixel-grid',
+  '--font-geist-pixel-triangle',
+];
+
+const BG_COLORS = [
+  'rgba(255, 255, 255, 0.05)',
+  'rgba(232, 85, 58, 0.065)',
+  'rgba(255, 255, 255, 0.04)',
+  'rgba(232, 85, 58, 0.055)',
+];
+
+const LABS_COLORS = [
+  '#e8553a',                       // accent
+  '#d8d4cb',                       // text
+  'rgba(216, 212, 203, 0.35)',     // text-dim
+  'rgba(216, 212, 203, 0.6)',      // text-mid
 ];
 
 const WORK = [
   { num: '01', client: 'Agricultural producer', geo: 'DE / CA', scope: 'Visual defect detection + chemical profiling', impact: '~200 hrs/mo saved' },
-  { num: '02', client: 'Pharma — clinical trials', geo: 'US', scope: 'EDC extraction from medical records', impact: '2 FTEs automated' },
+  { num: '02', client: 'Pharma -clinical trials', geo: 'US', scope: 'EDC extraction from medical records', impact: '2 FTEs automated' },
   { num: '03', client: 'Construction developer', geo: 'Toronto', scope: 'Pay application reconciliation', impact: '3 FTEs automated' },
   { num: '04', client: 'Legal tech startup', geo: '', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
 ];
@@ -19,25 +33,60 @@ const WORK = [
 export default function Home() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [variantIdx, setVariantIdx] = useState(0);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setVariantIdx(i => (i + 1) % BG_STATES.length);
+      setVariantIdx(i => (i + 1) % PIXEL_FONTS.length);
     }, 4000);
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const draw = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const fontFamily = getComputedStyle(document.documentElement)
+        .getPropertyValue(PIXEL_FONTS[variantIdx]).trim();
+
+      ctx.clearRect(0, 0, w, h);
+      ctx.font = `4px ${fontFamily}`;
+      ctx.fillStyle = BG_COLORS[variantIdx];
+      ctx.textBaseline = 'top';
+
+      const spacing = 5;
+      for (let y = 0; y < h; y += spacing) {
+        for (let x = 0; x < w; x += spacing) {
+          ctx.fillText('■', x, y);
+        }
+      }
+    };
+
+    draw();
+    window.addEventListener('resize', draw);
+    return () => window.removeEventListener('resize', draw);
+  }, [variantIdx]);
+
   return (
-    <div className="min-h-screen relative" style={{
-      backgroundImage: `
-        linear-gradient(rgba(${BG_STATES[variantIdx].color}, ${BG_STATES[variantIdx].opacity}) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(${BG_STATES[variantIdx].color}, ${BG_STATES[variantIdx].opacity}) 1px, transparent 1px)
-      `,
-      backgroundSize: `${BG_STATES[variantIdx].size}px ${BG_STATES[variantIdx].size}px`,
-      transition: 'background-size 3s ease-in-out',
-    }}>
+    <div className="min-h-screen relative">
+      <canvas
+        ref={canvasRef}
+        style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0 }}
+      />
       <div className="noise" />
-      <div style={{ maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+      <div style={{ maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto', position: 'relative', zIndex: 10 }}>
 
       {/* ── Header ──────────────────────────────── */}
       <header className="relative z-10 page-pad" style={{ paddingTop: '1.5rem', paddingBottom: '1rem' }}>
@@ -48,13 +97,12 @@ export default function Home() {
               <span className="dot dot-b font-pixel">■</span>
               <span className="dot dot-c font-pixel">■</span>
             </span>
-            <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul labs</span>
+            <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span style={{ color: LABS_COLORS[variantIdx], transition: 'color 1.5s ease' }}>labs</span></span>
           </div>
-          <nav style={{ fontSize: '10px', letterSpacing: '0.2em', color: 'var(--text-dim)' }}>
+          <nav style={{ fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-mid)', textTransform: 'uppercase' as const }}>
             SF / NY / Toronto / London / Dubai
           </nav>
         </div>
-        <div className="divider" style={{ marginTop: '1rem' }} />
       </header>
 
       <main className="relative z-10">
@@ -63,9 +111,9 @@ export default function Home() {
         <section className="page-pad reveal" style={{ paddingTop: '5rem', paddingBottom: '2.5rem' }}>
           <h1 style={{
             fontSize: 'clamp(1.8rem, 3.8vw, 3rem)',
-            lineHeight: 1.3,
-            fontWeight: 400,
-            maxWidth: '720px',
+            lineHeight: 1.4,
+            fontWeight: 700,
+            color: 'var(--accent)',
           }}>
             WE BUILD AI SYSTEMS FOR COMPANIES WHO&apos;VE ALREADY TRIED THE OTHER WAY.
           </h1>
@@ -79,7 +127,7 @@ export default function Home() {
             An applied AI lab. Engineers who build, domain experts who&apos;ve done your job before. No sales team.
           </p>
           <p style={{ marginBottom: '1rem' }}>
-            Healthcare. Legal. Insurance. Accounting. Supply chain. Clinical trials. Financial services. Construction. Government. If your industry spends more on services than software, we probably have a domain expert who&apos;s worked in it.
+            If your industry spends more on people than software, that&apos;s where we come in. We don&apos;t do defense.
           </p>
           <p>
             If you need it working by next month,{' '}
@@ -139,10 +187,10 @@ export default function Home() {
           <div className="grid md:grid-cols-2" style={{ gap: '3rem', maxWidth: '56rem' }}>
             <div style={{ color: 'var(--text-mid)' }}>
               <p>
-                AI is the biggest step change in our working lifetime.
-                But most of what passes for &ldquo;AI strategy&rdquo; is a slide deck
-                and a demo that wows the board and crashes in production.
-                The model isn&apos;t the hard part.
+                AI changes what a team of five can do. Most companies
+                haven&apos;t figured out how yet. What passes for &ldquo;AI strategy&rdquo;
+                is a slide deck and a demo that wows the board and crashes
+                in production. The model isn&apos;t the hard part.
               </p>
             </div>
             <div>
@@ -150,11 +198,11 @@ export default function Home() {
                 The hard part is knowing what to build. Healthcare has nothing
                 in common with finance. We bring domain experts who&apos;ve worked
                 in your industry, not consultants who read about it.
-                We design modular systems — because the model will change,
+                We design modular systems -because the model will change,
                 but your architecture shouldn&apos;t have to.
               </p>
               <p className="pull-quote" style={{ fontSize: '20px', lineHeight: 1.4 }}>
-                The value is in the evaluations you build around it.
+                The model is the easy part. Knowing whether it actually works is the work.
               </p>
             </div>
           </div>

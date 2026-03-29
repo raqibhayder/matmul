@@ -36,6 +36,11 @@ body {
   color: var(--bg);
 }
 
+.hero-block ::selection {
+  background: var(--bg);
+  color: var(--accent);
+}
+
 /* ── Layout ────────────────────────────────── */
 
 .page-pad {
