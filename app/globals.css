@@ -15,8 +15,8 @@
   --border: rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.15);
   --text: #1c1b19;
-  --text-dim: rgba(28, 27, 25, 0.35);
-  --text-mid: rgba(28, 27, 25, 0.55);
+  --text-dim: rgba(28, 27, 25, 0.45);
+  --text-mid: rgba(28, 27, 25, 0.6);
   color-scheme: light;
 }
 
@@ -28,8 +28,8 @@
   --border: rgba(255, 255, 255, 0.06);
   --border-hover: rgba(255, 255, 255, 0.1);
   --text: #d8d4cb;
-  --text-dim: rgba(216, 212, 203, 0.35);
-  --text-mid: rgba(216, 212, 203, 0.6);
+  --text-dim: rgba(216, 212, 203, 0.45);
+  --text-mid: rgba(216, 212, 203, 0.65);
   color-scheme: dark;
 }
 
@@ -155,10 +155,10 @@ body {
 
 .section-label {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0.2em;
   color: var(--text);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .section-label::before {
@@ -166,6 +166,10 @@ body {
   color: var(--accent);
   opacity: 0.7;
   margin-right: 8px;
+}
+
+[data-theme="dark"] .section-label {
+  opacity: 0.6;
 }
 
 [data-theme="dark"] .section-label::before {
@@ -245,6 +249,11 @@ body {
   border-radius: 2px;
 }
 
+.link-icon {
+  color: var(--text);
+  transition: color 0.3s;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .link-icon:hover {
     color: var(--accent);
@@ -294,10 +303,10 @@ body {
 /* ── UWaterloo badge ──────────────────────── */
 
 .uwaterloo-badge {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-geist-sans), sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--bg);
   background: var(--text);
   padding: 0 5px;
@@ -306,6 +315,13 @@ body {
   align-items: center;
   justify-content: center;
   height: 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .uwaterloo-badge:hover {
+    background: var(--accent);
+  }
 }
 
 /* ── Divider ───────────────────────────────── */

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader } from "next/font/google";
 import { GeistPixelSquare, GeistPixelCircle, GeistPixelGrid, GeistPixelTriangle } from "geist/font/pixel";
 import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -46,7 +47,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${GeistPixelSquare.variable} ${GeistPixelCircle.variable} ${GeistPixelGrid.variable} ${GeistPixelTriangle.variable} ${GeistMono.variable}`}
+      className={`${newsreader.variable} ${GeistSans.variable} ${GeistPixelSquare.variable} ${GeistPixelCircle.variable} ${GeistPixelGrid.variable} ${GeistPixelTriangle.variable} ${GeistMono.variable}`}
     >
       <head>
         <meta name="theme-color" content="#f5f3f0" media="(prefers-color-scheme: light)" />
