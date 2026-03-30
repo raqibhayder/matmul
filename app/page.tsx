@@ -115,7 +115,7 @@ export default function Home() {
             color: 'var(--accent)',
             textWrap: 'balance',
           }}>
-            Your team is doing work that doesn&apos;t need a human.
+            Half the AI projects in the world shouldn&apos;t exist. We build the other half.
           </h1>
         </section>
 
