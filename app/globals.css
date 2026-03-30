@@ -91,16 +91,45 @@ body {
   gap: 0;
   margin-right: 10px;
   vertical-align: middle;
-  animation: mark-breathe 4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
 }
 
 .matmul-mark > * {
   display: block;
 }
 
-@keyframes mark-breathe {
-  0%, 100% { transform: scale(1); opacity: 0.85; }
-  50%      { transform: scale(1.08); opacity: 1; }
+/* Clockwise color rotation: TL → TR → BR → BL → TL */
+.matmul-mark > :nth-child(1) { animation: mark-rotate-tl 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+.matmul-mark > :nth-child(2) { animation: mark-rotate-tr 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+.matmul-mark > :nth-child(3) { animation: mark-rotate-bl 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+.matmul-mark > :nth-child(4) { animation: mark-rotate-br 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+
+@keyframes mark-rotate-tl {
+  0%, 17%   { background-color: #d4562e; }
+  25%, 42%  { background-color: #eba86a; }
+  50%, 67%  { background-color: #f5d4a0; }
+  75%, 92%  { background-color: #eb8f3a; }
+  100%      { background-color: #d4562e; }
+}
+@keyframes mark-rotate-tr {
+  0%, 17%   { background-color: #eb8f3a; }
+  25%, 42%  { background-color: #d4562e; }
+  50%, 67%  { background-color: #eba86a; }
+  75%, 92%  { background-color: #f5d4a0; }
+  100%      { background-color: #eb8f3a; }
+}
+@keyframes mark-rotate-bl {
+  0%, 17%   { background-color: #eba86a; }
+  25%, 42%  { background-color: #f5d4a0; }
+  50%, 67%  { background-color: #eb8f3a; }
+  75%, 92%  { background-color: #d4562e; }
+  100%      { background-color: #eba86a; }
+}
+@keyframes mark-rotate-br {
+  0%, 17%   { background-color: #f5d4a0; }
+  25%, 42%  { background-color: #eb8f3a; }
+  50%, 67%  { background-color: #d4562e; }
+  75%, 92%  { background-color: #eba86a; }
+  100%      { background-color: #f5d4a0; }
 }
 
 /* ── Section label ─────────────────────────── */
@@ -227,7 +256,7 @@ body {
 /* ── Reduced motion ───────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  .matmul-mark { animation: none; opacity: 1; }
+  .matmul-mark > * { animation: none; }
   .float { animation: none; }
   .reveal { animation: none; opacity: 1; }
   .labs-cycle { animation: none; }
