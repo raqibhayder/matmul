@@ -7,14 +7,14 @@ const BG_DARK = 'rgba(255, 255, 255, 0.01)';
 
 
 const WORK = [
-  { num: '01', client: 'Agricultural producer', geo: 'Germany / Canada', scope: 'Visual defect detection + chemical' +
-      ' profiling', impact: '~200 hrs/mo saved' },
-  { num: '02', client: 'Pharma - clinical trials', geo: 'US', scope: 'Electronic Data Capture (EDC) extraction from' +
-      ' medical records', impact: '2 FTEs automated' },
-  { num: '03', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation agent', impact: '3 FTEs automated' },
-  { num: '04', client: 'Legal tech startup', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
-  { num: '05', client: 'Enterprise SaaS', geo: 'US', scope: 'Contract review agents for revenue recognition', impact: '~150hrs/mo' +
+  { num: '01', client: 'Enterprise SaaS', geo: 'US', scope: 'Contract review agents for revenue recognition', impact: '~150hrs/mo' +
       ' saved'},
+  { num: '02', client: 'Agricultural producer', geo: 'Germany / Canada', scope: 'Visual defect detection + chemical' +
+      ' profiling', impact: '~200 hrs/mo saved' },
+  { num: '03', client: 'Pharma - clinical trials', geo: 'US', scope: 'Electronic Data Capture (EDC) extraction from' +
+      ' medical records', impact: '2 FTEs automated' },
+  { num: '04', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation agent', impact: '3 FTEs automated' },
+  { num: '05', client: 'Legal tech startup', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
 ]
 
 export default function Home() {
@@ -115,7 +115,7 @@ export default function Home() {
             color: 'var(--accent)',
             textWrap: 'balance',
           }}>
-            What would your company look like if your team only did work that needed a human?
+            Your team is doing work that doesn&apos;t need a human.
           </h1>
         </section>
 

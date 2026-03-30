@@ -3,15 +3,18 @@
 ## Hero copy alternatives
 
 **Current (active):**
-> What would your company look like if your team only did work that needed a human?
+> Your team is doing work that doesn't need a human.
 
 **Alternative A:**
-> Half of what people say AI can do, it can't. The other half? It can do more than anyone expects.
+> What would your company look like if your team only did work that needed a human?
 
 **Alternative B:**
-> Half the AI projects in the world shouldn't exist. We build the other half.
+> Half of what people say AI can do, it can't. The other half? It can do more than anyone expects.
 
 **Alternative C:**
+> Half the AI projects in the world shouldn't exist. We build the other half.
+
+**Alternative D:**
 > Somewhere in your company, a person is doing a job that shouldn't exist anymore.
 
 ## Development
