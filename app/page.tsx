@@ -12,7 +12,7 @@ const WORK = [
       ' medical records', impact: '2 FTEs automated' },
   { num: '03', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation agent', impact: '3 FTEs automated' },
   { num: '04', client: 'Legal tech startup', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
-  { num: '05', client: '', geo: 'US', scope: 'Contract review agents for revenue recognition', impact: '~150hrs/mo' +
+  { num: '05', client: 'Enterprise SaaS', geo: 'US', scope: 'Contract review agents for revenue recognition', impact: '~150hrs/mo' +
       ' saved'},
 ]
 
@@ -105,7 +105,7 @@ export default function Home() {
       <main className="relative z-10">
 
         {/* ── Hero ────────────────────────────────── */}
-        <section className="page-pad reveal" style={{ paddingTop: '5rem', paddingBottom: '2.5rem' }}>
+        <section className="page-pad reveal" style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
           <h1 style={{
             fontSize: 'clamp(1.8rem, 3.8vw, 3rem)',
             lineHeight: 1.4,
@@ -119,35 +119,67 @@ export default function Home() {
 
         <section
           className="page-pad reveal reveal-d2"
-          style={{ color: 'var(--text)', opacity: 0.7, paddingBottom: '5rem', fontSize: '16px' }}
+          style={{ paddingBottom: '5rem', fontSize: '14px' }}
         >
-          <p style={{ marginBottom: '1rem' }}>
-            We&apos;re an applied AI lab. Domain experts and engineers, no sales team.
-            We&apos;ve built AI across industries. We know what works and what doesn&apos;t.
-          </p>
-          <p>
-            If you need it working by next month,{' '}
-            <a href="#contact" className="link-accent">let&apos;s talk</a>.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.75rem' }}>
+            {[
+              ['What', 'Applied AI lab'],
+              ['Team', 'Domain experts + craft-obsessed engineers, no sales team'],
+              ['Availability', <>3-4 projects a year. <a href="mailto:hello@matmul.io" className="link-accent">Reach out</a>.</>],
+            ].map(([key, value], i) => (
+              <div key={i} className="flex" style={{ gap: '1.5rem', lineHeight: 1.85 }}>
+                <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>{key}</span>
+                <span style={{ color: 'var(--text)', opacity: 0.7 }}>{value}</span>
+              </div>
+            ))}
+            <div className="flex" style={{ gap: '1.5rem', lineHeight: 1.85 }}>
+              <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>Industries</span>
+              <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.25rem' }}>
+                <div className="flex flex-wrap" style={{ gap: '0' }}>
+                  {['Accounting', 'Agriculture', 'Construction', 'Enterprise SaaS'].map((ind, i, arr) => (
+                    <span key={ind} style={{ color: 'var(--text)', opacity: 0.7, fontSize: '13px' }}>
+                      {ind}{i < arr.length - 1 && <span style={{ color: 'var(--accent)', opacity: 0.5, margin: '0 0.4rem' }}>/</span>}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex flex-wrap" style={{ gap: '0' }}>
+                  {['Healthcare', 'Insurance', 'Legal', 'Pharma', 'Supply chain'].map((ind, i, arr) => (
+                    <span key={ind} style={{ color: 'var(--text)', opacity: 0.7, fontSize: '13px' }}>
+                      {ind}{i < arr.length - 1 && <span style={{ color: 'var(--accent)', opacity: 0.5, margin: '0 0.4rem' }}>/</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* ── Opinions ───────────────────────────── */}
         <section className="page-pad reveal reveal-d3" style={{ paddingBottom: '5rem' }}>
-          <div className="section-label" style={{ marginBottom: '2.5rem' }}>HOW WE THINK ABOUT THIS</div>
+          <div className="section-label" style={{ marginBottom: '2.5rem' }}>HOW WE WORK</div>
 
-          <div style={{ maxWidth: '40rem', display: 'flex', flexDirection: 'column' as const, gap: '2rem' }}>
-            <p style={{ color: 'var(--text-mid)' }}>
-              AI changes what a team of five can do. Most companies haven&apos;t figured out how.
+          <div style={{ maxWidth: '40rem', display: 'flex', flexDirection: 'column' as const, gap: '2.5rem', fontSize: '16px' }}>
+            <p style={{ color: 'var(--text)', opacity: 0.75 }}>
+              <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" className="link-accent" style={{ fontVariantNumeric: 'tabular-nums' }}>95% of enterprises</a>{' '}get
+              zero return on their AI investment. The models aren&apos;t the problem.
+              Nobody studied the work. 
             </p>
-            <p style={{ color: 'var(--text-mid)' }}>
-              We start with the work, not the model. We&apos;re not a frontier lab racing
-              to build the next model. The models are already good enough. The hard part is making them reliable.
+            <p style={{ color: 'var(--text)', opacity: 0.75 }}>
+              Every role is a mix of{' '}
+              <a href="https://sequoiacap.com/article/services-the-new-software/" className="link-accent">rules and judgment</a>.
+              We find the rule-based parts, the ones eating your team&apos;s week,
+              and automate them. The judgment stays with your people.
             </p>
-            <p style={{ color: 'var(--text-mid)' }}>
-              If AI can&apos;t do it reliably, we&apos;ll tell you before you pay us.
-              Models change every six months. We build for that.
-              We&apos;ve turned down more projects than we&apos;ve taken. Bad projects
-              make everyone miserable, and life&apos;s too short.
+            <p style={{ color: 'var(--text)', opacity: 0.75 }}>
+              External partnerships reach production at{' '}
+              <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" className="link-accent">2x the rate</a> of
+              internal builds. We exist for that reason. Building AI that fits
+              your process is a different skill than building the rest of your product.
+            </p>
+            <p style={{ color: 'var(--text)', opacity: 0.75 }}>
+              If it can&apos;t be done reliably, we&apos;ll tell you.
+              We&apos;ve said no more often than yes. Bad projects make everyone
+              miserable, and life&apos;s too short.
             </p>
           </div>
         </section>
@@ -163,28 +195,29 @@ export default function Home() {
                 className={`work-row cursor-default ${
                   hovered !== null && hovered !== i ? 'dimmed' : ''
                 }`}
-                style={{ padding: '1.1rem 1rem', margin: '0 -1rem' }}
+                style={{ padding: '1.25rem 1rem', margin: '0 -1rem' }}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
               >
-                <div className="flex items-baseline justify-between" style={{ gap: '1.5rem' }}>
-                  <div className="flex items-baseline" style={{ gap: '0.75rem', minWidth: 0 }}>
-                    <span style={{ fontSize: '14px', color: 'var(--accent)', flexShrink: 0 }}>
-                      {item.num}
-                    </span>
-                    <div>
-                      <div className="flex flex-wrap items-baseline" style={{ gap: '0.5rem' }}>
-                        {item.client && <span style={{ fontSize: '20px' }}>{item.client}</span>}
-                        {item.geo && (
-                          <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>{item.geo}</span>
-                        )}
-                      </div>
-                      <div style={{ fontSize: '14px', color: 'var(--text-dim)', marginTop: '3px' }}>
-                        {item.scope}
-                      </div>
+                <div className="flex items-baseline" style={{ gap: '0.75rem' }}>
+                  <span style={{ fontSize: '14px', color: 'var(--accent)', flexShrink: 0 }}>
+                    {item.num}
+                  </span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ fontSize: '18px' }}>{item.scope}</div>
+                    <div className="flex flex-wrap items-baseline" style={{ gap: '0.5rem', marginTop: '4px' }}>
+                      {item.client && (
+                        <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>{item.client}</span>
+                      )}
+                      {item.client && item.geo && (
+                        <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>·</span>
+                      )}
+                      {item.geo && (
+                        <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>{item.geo}</span>
+                      )}
                     </div>
                   </div>
-                  <span className="hidden md:block" style={{ fontSize: '14px', color: 'var(--accent)', flexShrink: 0, whiteSpace: 'nowrap' }}>
+                  <span style={{ fontSize: '16px', fontWeight: 700, color: 'var(--accent)', flexShrink: 0, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>
                     {item.impact}
                   </span>
                 </div>
@@ -192,8 +225,8 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ marginTop: '1.25rem', fontSize: '11px', color: 'var(--text-dim)' }}>
-            + more under NDA
+          <div style={{ marginTop: '1.25rem', fontSize: '14px', color: 'var(--text-dim)' }}>
+            + more we can&apos;t share publicly
           </div>
         </section>
 
@@ -202,44 +235,41 @@ export default function Home() {
           <div className="section-label" style={{ marginBottom: '2rem' }}>WHO YOU&apos;LL ACTUALLY TALK TO</div>
 
           <div className="grid md:grid-cols-2" style={{ gap: '1.5rem', maxWidth: '52rem' }}>
-            <div className="card flex flex-col" style={{ padding: '1.75rem 2rem' }}>
-              <div className="flex items-baseline" style={{ gap: '0.75rem', marginBottom: '1rem' }}>
+            <div className="card flex flex-col" style={{ padding: '2rem 2.25rem' }}>
+              <div className="flex items-baseline" style={{ gap: '0.75rem', marginBottom: '1.25rem' }}>
                 <span style={{ fontSize: '18px' }}>Raqib</span>
-                <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-dim)' }}>PRINCIPAL</span>
+                <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--accent)' }}>PRINCIPAL</span>
               </div>
-              <div style={{ fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', flex: 1 }}>
-                iPads at Apple. Cars at GM. Batteries at Tesla. Then software,
-                because it ships faster. Led data at Neuron. Now builds AI
-                that predicts surgical complications and fights insurance
-                companies. It usually wins.
+              <div style={{ fontSize: '14px', lineHeight: 2, color: 'var(--text)', opacity: 0.75, flex: 1 }}>
+                Hardware at Apple, GM, and Tesla. ML and data at Neuron,
+                working with surgeons on post-operative care. Now building
+                autonomous revenue cycle management.
               </div>
-              <a href="https://www.linkedin.com/in/raqibhayder/" aria-label="Raqib on LinkedIn" className="inline-block link-icon" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
+              <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span className="uwaterloo-badge">UWATERLOO</span>
+                <a href="https://www.linkedin.com/in/raqibhayder/" aria-label="Raqib on LinkedIn" className="inline-block link-icon" style={{ color: 'var(--text)', lineHeight: 0, transition: 'color 0.3s' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+              </div>
             </div>
-            <div className="card flex flex-col" style={{ padding: '1.75rem 2rem' }}>
-              <div className="flex items-baseline" style={{ gap: '0.75rem', marginBottom: '1rem' }}>
+            <div className="card flex flex-col" style={{ padding: '2rem 2.25rem' }}>
+              <div className="flex items-baseline" style={{ gap: '0.75rem', marginBottom: '1.25rem' }}>
                 <span style={{ fontSize: '18px' }}>Marcel</span>
-                <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-dim)' }}>PRINCIPAL</span>
+                <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--accent)' }}>PRINCIPAL</span>
               </div>
-              <div style={{ fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', flex: 1 }}>
-                Founding product engineer at a company fighting diabetes.
-                Makes pixels dance on screens. Previously
-                designed skull reconstruction implants for neurosurgeons.
-                Not a metaphor. Actual skulls, actual surgeons.
+              <div style={{ fontSize: '14px', lineHeight: 2, color: 'var(--text)', opacity: 0.75, flex: 1 }}>
+                Founding product engineer. Previously designed cranial
+                reconstruction implants for neurosurgeons. Now building
+                an autonomous pharmacy.
               </div>
-              <a href="https://www.linkedin.com/in/marcel-anis/" aria-label="Marcel on LinkedIn" className="inline-block link-icon" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
+              <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span className="uwaterloo-badge">UWATERLOO</span>
+                <a href="https://www.linkedin.com/in/marcel-anis/" aria-label="Marcel on LinkedIn" className="inline-block link-icon" style={{ color: 'var(--text)', lineHeight: 0, transition: 'color 0.3s' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+              </div>
             </div>
           </div>
-
-          <p style={{ marginTop: '2rem', fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', maxWidth: '460px' }}>
-            We met at University of Waterloo. We&apos;ve been
-            building things together ever since. Sometimes for employers,
-            sometimes for ourselves, always with the same rule: if it
-            doesn&apos;t ship, it doesn&apos;t count.
-          </p>
         </section>
 
         {/* ── Contact ─────────────────────────────── */}
@@ -261,9 +291,8 @@ export default function Home() {
       {/* ── Footer ──────────────────────────────── */}
       <footer className="relative z-10 page-pad" style={{ paddingTop: '1rem', paddingBottom: '1.5rem' }}>
         <div className="divider" style={{ marginBottom: '1rem' }} />
-        <div className="flex flex-col md:flex-row justify-between items-baseline" style={{ gap: '0.5rem', fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-dim)' }}>
+        <div style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-dim)' }}>
           <span>&copy; 2026 matmul inc.</span>
-          <span>SF / NY / Toronto / London / Dubai</span>
         </div>
       </footer>
       </div>

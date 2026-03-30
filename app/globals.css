@@ -117,52 +117,59 @@ body {
 }
 
 /* Clockwise color rotation: TL → TR → BR → BL → TL */
-.matmul-mark > :nth-child(1) { animation: mark-rotate-tl 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
-.matmul-mark > :nth-child(2) { animation: mark-rotate-tr 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
-.matmul-mark > :nth-child(3) { animation: mark-rotate-bl 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
-.matmul-mark > :nth-child(4) { animation: mark-rotate-br 12s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+.matmul-mark > :nth-child(1) { animation: mark-rotate-tl 6s ease-in-out infinite; }
+.matmul-mark > :nth-child(2) { animation: mark-rotate-tr 6s ease-in-out infinite; }
+.matmul-mark > :nth-child(3) { animation: mark-rotate-bl 6s ease-in-out infinite; }
+.matmul-mark > :nth-child(4) { animation: mark-rotate-br 6s ease-in-out infinite; }
 
 @keyframes mark-rotate-tl {
-  0%, 17%   { background-color: #d4562e; }
-  25%, 42%  { background-color: #eba86a; }
-  50%, 67%  { background-color: #f5d4a0; }
-  75%, 92%  { background-color: #eb8f3a; }
-  100%      { background-color: #d4562e; }
+  0%   { background-color: #d4562e; }
+  25%  { background-color: #eba86a; }
+  50%  { background-color: #f5d4a0; }
+  75%  { background-color: #eb8f3a; }
+  100% { background-color: #d4562e; }
 }
 @keyframes mark-rotate-tr {
-  0%, 17%   { background-color: #eb8f3a; }
-  25%, 42%  { background-color: #d4562e; }
-  50%, 67%  { background-color: #eba86a; }
-  75%, 92%  { background-color: #f5d4a0; }
-  100%      { background-color: #eb8f3a; }
+  0%   { background-color: #eb8f3a; }
+  25%  { background-color: #d4562e; }
+  50%  { background-color: #eba86a; }
+  75%  { background-color: #f5d4a0; }
+  100% { background-color: #eb8f3a; }
 }
 @keyframes mark-rotate-bl {
-  0%, 17%   { background-color: #eba86a; }
-  25%, 42%  { background-color: #f5d4a0; }
-  50%, 67%  { background-color: #eb8f3a; }
-  75%, 92%  { background-color: #d4562e; }
-  100%      { background-color: #eba86a; }
+  0%   { background-color: #eba86a; }
+  25%  { background-color: #f5d4a0; }
+  50%  { background-color: #eb8f3a; }
+  75%  { background-color: #d4562e; }
+  100% { background-color: #eba86a; }
 }
 @keyframes mark-rotate-br {
-  0%, 17%   { background-color: #f5d4a0; }
-  25%, 42%  { background-color: #eb8f3a; }
-  50%, 67%  { background-color: #d4562e; }
-  75%, 92%  { background-color: #eba86a; }
-  100%      { background-color: #f5d4a0; }
+  0%   { background-color: #f5d4a0; }
+  25%  { background-color: #eb8f3a; }
+  50%  { background-color: #d4562e; }
+  75%  { background-color: #eba86a; }
+  100% { background-color: #f5d4a0; }
 }
 
 /* ── Section label ─────────────────────────── */
 
 .section-label {
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--text-dim);
+  color: var(--text);
+  opacity: 0.5;
 }
 
 .section-label::before {
   content: '//';
   color: var(--accent);
+  opacity: 0.7;
   margin-right: 8px;
+}
+
+[data-theme="dark"] .section-label::before {
+  opacity: 1;
 }
 
 /* ── Work items ────────────────────────────── */
@@ -196,6 +203,7 @@ body {
 .card {
   background: var(--bg-raised);
   border: 1px solid var(--border);
+  border-radius: 4px;
   transition: border-color 0.25s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
@@ -237,11 +245,17 @@ body {
   border-radius: 2px;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .link-icon:hover {
+    color: var(--accent);
+  }
+}
+
 /* ── Float ─────────────────────────────────── */
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+  50% { transform: translateY(-2px); }
 }
 
 .float {
@@ -275,6 +289,23 @@ body {
 @keyframes glow-pulse {
   0%, 100% { color: var(--text); }
   50%      { color: var(--accent); }
+}
+
+/* ── UWaterloo badge ──────────────────────── */
+
+.uwaterloo-badge {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--text);
+  padding: 0 5px;
+  border-radius: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
 }
 
 /* ── Divider ───────────────────────────────── */
