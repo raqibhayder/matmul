@@ -9,7 +9,7 @@ const WORK = [
       ' profiling', impact: '~200 hrs/mo saved' },
   { num: '02', client: 'Pharma - clinical trials', geo: 'US', scope: 'Electronic Data Capture (EDC) extraction from' +
       ' medical records', impact: '2 FTEs automated' },
-  { num: '03', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation', impact: '3 FTEs automated' },
+  { num: '03', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation agent', impact: '3 FTEs automated' },
   { num: '04', client: 'Legal tech startup', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
   { num: '05', client: '', geo: 'US', scope: 'Contract review agents for revenue recognition', impact: '~150hrs/mo' +
       ' saved'},
@@ -93,7 +93,7 @@ export default function Home() {
             fontWeight: 700,
             color: 'var(--accent)',
           }}>
-            Somewhere in your company, a person is doing a job that shouldn&apos;t exist anymore.
+            What would your company look like if your team only did work that needed a human?
           </h1>
         </section>
 
@@ -103,8 +103,7 @@ export default function Home() {
         >
           <p style={{ marginBottom: '1rem' }}>
             We&apos;re an applied AI lab. Domain experts and engineers, no sales team.
-            We&apos;ve shipped across enough industries to know what works and what&apos;s
-            a demo that dies in production.
+            We&apos;ve built AI across industries. We know what works and what doesn&apos;t.
           </p>
           <p>
             If you need it working by next month,{' '}
@@ -112,8 +111,29 @@ export default function Home() {
           </p>
         </section>
 
-        {/* ── Work ────────────────────────────────── */}
+        {/* ── Opinions ───────────────────────────── */}
         <section className="page-pad reveal reveal-d3" style={{ paddingBottom: '5rem' }}>
+          <div className="section-label" style={{ marginBottom: '2.5rem' }}>HOW WE THINK ABOUT THIS</div>
+
+          <div style={{ maxWidth: '40rem', display: 'flex', flexDirection: 'column' as const, gap: '2rem' }}>
+            <p style={{ color: 'var(--text-mid)' }}>
+              AI changes what a team of five can do. Most companies haven&apos;t figured out how.
+            </p>
+            <p style={{ color: 'var(--text-mid)' }}>
+              We start with the work, not the model. We&apos;re not a frontier lab racing
+              to build the next model. The models are already good enough. The hard part is making them reliable.
+            </p>
+            <p style={{ color: 'var(--text-mid)' }}>
+              If AI can&apos;t do it reliably, we&apos;ll tell you before you pay us.
+              Models change every six months. We build for that.
+              We&apos;ve turned down more projects than we&apos;ve taken. Bad projects
+              make everyone miserable, and life&apos;s too short.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Work ────────────────────────────────── */}
+        <section className="page-pad" style={{ paddingBottom: '5rem' }}>
           <div className="section-label" style={{ marginBottom: '2rem' }}>RECENT WORK</div>
 
           <div>
@@ -157,77 +177,44 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── Opinions ───────────────────────────── */}
-        <section className="page-pad" style={{ paddingBottom: '5rem' }}>
-          <div className="section-label" style={{ marginBottom: '2rem' }}>HOW WE THINK ABOUT THIS</div>
-
-          <div className="grid md:grid-cols-2" style={{ gap: '3rem', maxWidth: '56rem' }}>
-            <div style={{ color: 'var(--text-mid)' }}>
-              <p>
-                AI changes what a team of five can do. Most companies
-                haven&apos;t figured out how yet. What passes for &ldquo;AI strategy&rdquo;
-                is a slide deck and a demo that wows the board and crashes
-                in production. The model isn&apos;t the hard part.
-              </p>
-            </div>
-            <div>
-              <p style={{ color: 'var(--text-mid)', marginBottom: '1.5rem' }}>
-                The hard part is knowing what to build. Healthcare has nothing
-                in common with finance. We bring domain experts who&apos;ve worked
-                in your industry, not consultants who read about it.
-                We design modular systems -because the model will change,
-                but your architecture shouldn&apos;t have to.
-              </p>
-              <p className="pull-quote" style={{ fontSize: '20px', lineHeight: 1.4 }}>
-                The model is the easy part. Knowing whether it actually works is the work.
-              </p>
-            </div>
-          </div>
-
-          <p style={{ marginTop: '2rem', fontSize: '12px', lineHeight: 2, color: 'var(--text-dim)', maxWidth: '460px' }}>
-            We&apos;ve turned down more projects than we&apos;ve taken. Bad projects
-            make everyone miserable, and life&apos;s too short.
-          </p>
-        </section>
-
         {/* ── Team ────────────────────────────────── */}
         <section className="page-pad" style={{ paddingBottom: '5rem' }}>
           <div className="section-label" style={{ marginBottom: '2rem' }}>WHO YOU&apos;LL ACTUALLY TALK TO</div>
 
-          <div className="grid md:grid-cols-2" style={{ gap: '1px', maxWidth: '52rem', background: 'var(--border)' }}>
-            <div className="card" style={{ padding: '1.5rem 1.75rem', borderColor: 'transparent' }}>
+          <div className="grid md:grid-cols-2" style={{ gap: '1.5rem', maxWidth: '52rem' }}>
+            <div className="card flex flex-col" style={{ padding: '1.75rem 2rem' }}>
               <div className="flex items-baseline" style={{ gap: '0.75rem', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '18px' }}>Raqib</span>
                 <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-dim)' }}>PRINCIPAL</span>
               </div>
-              <div style={{ fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', marginBottom: '1rem' }}>
+              <div style={{ fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', flex: 1 }}>
                 iPads at Apple. Cars at GM. Batteries at Tesla. Then software,
                 because it ships faster. Led data at Neuron. Now builds AI
                 that predicts surgical complications and fights insurance
                 companies. It usually wins.
               </div>
-              <a href="https://www.linkedin.com/in/raqibhayder/" className="inline-block" style={{ color: 'var(--text-dim)', opacity: 0.6, transition: 'opacity 0.3s' }}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <a href="https://www.linkedin.com/in/raqibhayder/" className="inline-block" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
             </div>
-            <div className="card" style={{ padding: '1.5rem 1.75rem', borderColor: 'transparent' }}>
+            <div className="card flex flex-col" style={{ padding: '1.75rem 2rem' }}>
               <div className="flex items-baseline" style={{ gap: '0.75rem', marginBottom: '1rem' }}>
                 <span style={{ fontSize: '18px' }}>Marcel</span>
                 <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--text-dim)' }}>PRINCIPAL</span>
               </div>
-              <div style={{ fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', marginBottom: '1rem' }}>
+              <div style={{ fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', flex: 1 }}>
                 Founding product engineer at a company fighting diabetes.
                 Makes pixels dance on screens. Previously
                 designed skull reconstruction implants for neurosurgeons.
                 Not a metaphor. Actual skulls, actual surgeons.
               </div>
-              <a href="https://www.linkedin.com/in/marcel-anis/" className="inline-block" style={{ color: 'var(--text-dim)', opacity: 0.6, transition: 'opacity 0.3s' }}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <a href="https://www.linkedin.com/in/marcel-anis/" className="inline-block" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
             </div>
           </div>
 
-          <p style={{ marginTop: '2rem', fontSize: '12px', lineHeight: 2, color: 'var(--text-dim)', maxWidth: '460px' }}>
+          <p style={{ marginTop: '2rem', fontSize: '12px', lineHeight: 2, color: 'var(--text-mid)', maxWidth: '460px' }}>
             We met at University of Waterloo. We&apos;ve been
             building things together ever since. Sometimes for employers,
             sometimes for ourselves, always with the same rule: if it
@@ -236,25 +223,16 @@ export default function Home() {
         </section>
 
         {/* ── Contact ─────────────────────────────── */}
-        <section id="contact" className="page-pad" style={{ paddingBottom: '5rem' }}>
-          <div className="divider" style={{ marginBottom: '3.5rem' }} />
+        <section id="contact" className="page-pad" style={{ paddingBottom: '4rem' }}>
+          <div className="divider" style={{ marginBottom: '2.5rem' }} />
 
-          <div className="grid md:grid-cols-2 items-end" style={{ gap: '3rem', maxWidth: '52rem' }}>
-            <div>
-              <div className="section-label" style={{ marginBottom: '1.5rem' }}>SAY HELLO</div>
-              <div style={{ fontSize: '22px', lineHeight: 1.35 }}>
-                Got a workflow that&apos;s eating your week? Tell us about it.
-              </div>
-            </div>
-            <div>
-              <a href="mailto:hello@matmul.io" className="float" style={{ fontSize: '18px', color: 'var(--accent)' }}>
-                hello@matmul.io
-              </a>
-              <div style={{ fontSize: '11px', lineHeight: 2, marginTop: '1rem', color: 'var(--text-dim)' }}>
-                We reply within 48 hours. Usually faster.<br />
-                No forms. No calendly. No &ldquo;discovery calls.&rdquo;<br />
-                Just email, like it&apos;s 2008 and that was fine.
-              </div>
+          <div style={{ maxWidth: '32rem' }}>
+            <div className="section-label" style={{ marginBottom: '1.5rem' }}>SAY HELLO</div>
+            <a href="mailto:hello@matmul.io" className="float" style={{ fontSize: '20px', color: 'var(--accent)' }}>
+              hello@matmul.io
+            </a>
+            <div style={{ fontSize: '12px', lineHeight: 2, marginTop: '1rem', color: 'var(--text-mid)' }}>
+              We reply within 48 hours. Usually faster.
             </div>
           </div>
         </section>
