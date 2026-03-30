@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const BG_COLOR = 'rgba(255, 255, 255, 0.04)';
+const BG_LIGHT = 'rgba(0, 0, 0, 0.03)';
+const BG_DARK = 'rgba(255, 255, 255, 0.04)';
 
 const WORK = [
   { num: '01', client: 'Agricultural producer', geo: 'Germany / Canada', scope: 'Visual defect detection + chemical' +
@@ -37,10 +38,11 @@ export default function Home() {
 
       const fontFamily = getComputedStyle(document.documentElement)
         .getPropertyValue('--font-geist-pixel-square').trim();
+      const isDark = document.documentElement.dataset.theme === 'dark';
 
       ctx.clearRect(0, 0, w, h);
       ctx.font = `4px ${fontFamily}`;
-      ctx.fillStyle = BG_COLOR;
+      ctx.fillStyle = isDark ? BG_DARK : BG_LIGHT;
       ctx.textBaseline = 'top';
 
       const spacing = 5;
@@ -53,14 +55,23 @@ export default function Home() {
 
     draw();
     window.addEventListener('resize', draw);
-    return () => window.removeEventListener('resize', draw);
+
+    const observer = new MutationObserver(draw);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    return () => {
+      window.removeEventListener('resize', draw);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div className="min-h-screen relative">
       <canvas
         ref={canvasRef}
-        style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 0 }}
+        width={1}
+        height={1}
+        style={{ position: 'fixed', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0 }}
       />
       <div className="noise" />
       <div style={{ maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto', position: 'relative', zIndex: 10 }}>
@@ -68,7 +79,15 @@ export default function Home() {
       {/* ── Header ──────────────────────────────── */}
       <header className="relative z-10 page-pad" style={{ paddingTop: '1.5rem', paddingBottom: '1rem' }}>
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
+          <div
+            className="flex items-center cursor-default select-none"
+            onDoubleClick={() => {
+              const html = document.documentElement;
+              const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+              html.dataset.theme = next;
+              localStorage.setItem('matmul-theme', next);
+            }}
+          >
             <div className="matmul-mark">
               <div style={{ background: '#d4562e' }} />
               <div style={{ background: '#eb8f3a' }} />
@@ -92,6 +111,7 @@ export default function Home() {
             lineHeight: 1.4,
             fontWeight: 700,
             color: 'var(--accent)',
+            textWrap: 'balance',
           }}>
             What would your company look like if your team only did work that needed a human?
           </h1>
@@ -154,7 +174,7 @@ export default function Home() {
                     </span>
                     <div>
                       <div className="flex flex-wrap items-baseline" style={{ gap: '0.5rem' }}>
-                        <span style={{ fontSize: '20px' }}>{item.client}</span>
+                        {item.client && <span style={{ fontSize: '20px' }}>{item.client}</span>}
                         {item.geo && (
                           <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>{item.geo}</span>
                         )}
@@ -193,8 +213,8 @@ export default function Home() {
                 that predicts surgical complications and fights insurance
                 companies. It usually wins.
               </div>
-              <a href="https://www.linkedin.com/in/raqibhayder/" className="inline-block" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <a href="https://www.linkedin.com/in/raqibhayder/" aria-label="Raqib on LinkedIn" className="inline-block link-icon" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
             </div>
             <div className="card flex flex-col" style={{ padding: '1.75rem 2rem' }}>
@@ -208,8 +228,8 @@ export default function Home() {
                 designed skull reconstruction implants for neurosurgeons.
                 Not a metaphor. Actual skulls, actual surgeons.
               </div>
-              <a href="https://www.linkedin.com/in/marcel-anis/" className="inline-block" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <a href="https://www.linkedin.com/in/marcel-anis/" aria-label="Marcel on LinkedIn" className="inline-block link-icon" style={{ color: 'var(--text-mid)', marginTop: '1.25rem', transition: 'color 0.3s' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               </a>
             </div>
           </div>
@@ -228,7 +248,7 @@ export default function Home() {
 
           <div style={{ maxWidth: '32rem' }}>
             <div className="section-label" style={{ marginBottom: '1.5rem' }}>SAY HELLO</div>
-            <a href="mailto:hello@matmul.io" className="float" style={{ fontSize: '20px', color: 'var(--accent)' }}>
+            <a href="mailto:hello@matmul.io" className="float link-accent" style={{ fontSize: '20px' }}>
               hello@matmul.io
             </a>
             <div style={{ fontSize: '12px', lineHeight: 2, marginTop: '1rem', color: 'var(--text-mid)' }}>

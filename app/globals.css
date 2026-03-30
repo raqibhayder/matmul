@@ -8,6 +8,19 @@
 :root {
   --font-pixel: var(--font-geist-pixel-square);
   --font-serif: var(--font-newsreader), Georgia, serif;
+  --accent: #c9402a;
+  --accent-glow: rgba(201, 64, 42, 0.07);
+  --bg: #f5f3f0;
+  --bg-raised: #ffffff;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.15);
+  --text: #1c1b19;
+  --text-dim: rgba(28, 27, 25, 0.35);
+  --text-mid: rgba(28, 27, 25, 0.55);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
   --accent: #e8553a;
   --accent-glow: rgba(232, 85, 58, 0.12);
   --bg: #0c0c0b;
@@ -17,6 +30,7 @@
   --text: #d8d4cb;
   --text-dim: rgba(216, 212, 203, 0.35);
   --text-mid: rgba(216, 212, 203, 0.6);
+  color-scheme: dark;
 }
 
 body {
@@ -33,12 +47,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: var(--bg);
-}
-
-.hero-block ::selection {
-  background: var(--bg);
-  color: var(--accent);
+  color: #fff;
 }
 
 /* ── Layout ────────────────────────────────── */
@@ -57,9 +66,13 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.018;
   z-index: 100;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .noise {
+  opacity: 0.03;
 }
 
 /* ── Grid lines ────────────────────────────── */
@@ -70,10 +83,16 @@ body {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
   z-index: 0;
+}
+
+[data-theme="dark"] .grid-bg::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
 }
 
 /* ── Pixel font variants ───────────────────── */
@@ -183,6 +202,10 @@ body {
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     border-color: var(--border-hover);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  [data-theme="dark"] .card:hover {
     box-shadow: 0 0 40px rgba(232, 85, 58, 0.04);
   }
 }
@@ -200,10 +223,18 @@ body {
   color: var(--accent);
   text-decoration: none;
   transition: opacity 0.3s ease;
+  border-radius: 2px;
 }
 
 .link-accent:hover {
   opacity: 0.7;
+}
+
+.link-accent:focus-visible,
+.link-icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* ── Float ─────────────────────────────────── */
@@ -242,8 +273,8 @@ body {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { color: #d8d4cb; }
-  50%      { color: #e8553a; }
+  0%, 100% { color: var(--text); }
+  50%      { color: var(--accent); }
 }
 
 /* ── Divider ───────────────────────────────── */
@@ -259,5 +290,5 @@ body {
   .matmul-mark > * { animation: none; }
   .float { animation: none; }
   .reveal { animation: none; opacity: 1; }
-  .labs-cycle { animation: none; }
+  .labs-glow { animation: none; }
 }

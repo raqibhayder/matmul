@@ -48,6 +48,15 @@ export default function RootLayout({
       lang="en"
       className={`${newsreader.variable} ${GeistPixelSquare.variable} ${GeistPixelCircle.variable} ${GeistPixelGrid.variable} ${GeistPixelTriangle.variable} ${GeistMono.variable}`}
     >
+      <head>
+        <meta name="theme-color" content="#f5f3f0" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0c0c0b" media="(prefers-color-scheme: dark)" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('matmul-theme');if(t==='dark'){document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0c0c0b'}})()`,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
