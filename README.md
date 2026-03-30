@@ -3,7 +3,7 @@
 ## Hero copy alternatives
 
 **Current (active):**
-> Half the AI projects in the world shouldn't exist. We build the other half.
+> The reason most AI fails isn't the model. It's that nobody asked whether this was something AI was ever going to be good at.
 
 **Alternative A:**
 > Your team is doing work that doesn't need a human.

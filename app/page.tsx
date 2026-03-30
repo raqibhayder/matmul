@@ -115,7 +115,7 @@ export default function Home() {
             color: 'var(--accent)',
             textWrap: 'balance',
           }}>
-            Half the AI projects in the world shouldn&apos;t exist. We build the other half.
+            The reason most AI fails isn&apos;t the model. It&apos;s that nobody asked whether this was something AI was ever going to be good at.
           </h1>
         </section>
 
