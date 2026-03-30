@@ -7,10 +7,12 @@ const BG_COLOR = 'rgba(255, 255, 255, 0.04)';
 const WORK = [
   { num: '01', client: 'Agricultural producer', geo: 'Germany / Canada', scope: 'Visual defect detection + chemical' +
       ' profiling', impact: '~200 hrs/mo saved' },
-  { num: '02', client: 'Pharma - clinical trials', geo: 'US', scope: 'EDC extraction from medical records', impact: '2 FTEs automated' },
+  { num: '02', client: 'Pharma - clinical trials', geo: 'US', scope: 'Electronic Data Capture (EDC) extraction from' +
+      ' medical records', impact: '2 FTEs automated' },
   { num: '03', client: 'Construction developer', geo: 'Canada', scope: 'Pay application reconciliation', impact: '3 FTEs automated' },
   { num: '04', client: 'Legal tech startup', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
-  { num: '05', client: '', geo: 'US', scope: 'Contract review agents for due diligence', impact: 'Days → hours' },
+  { num: '05', client: '', geo: 'US', scope: 'Contract review agents for revenue recognition', impact: '~150hrs/mo' +
+      ' saved'},
 ]
 
 export default function Home() {
@@ -91,7 +93,7 @@ export default function Home() {
             fontWeight: 700,
             color: 'var(--accent)',
           }}>
-            We build AI systems for companies who&apos;ve already tried the other way.
+            Somewhere in your company, a person is doing a job that shouldn&apos;t exist anymore.
           </h1>
         </section>
 
@@ -100,10 +102,9 @@ export default function Home() {
           style={{ color: 'var(--text)', opacity: 0.7, paddingBottom: '5rem', fontSize: '16px' }}
         >
           <p style={{ marginBottom: '1rem' }}>
-            We are an applied AI lab. Our team consists of domain experts and engineers. No sales team.
-          </p>
-          <p style={{ marginBottom: '1rem' }}>
-            If your company spends more on people than software, that&apos;s where we come in.
+            We&apos;re an applied AI lab. Domain experts and engineers, no sales team.
+            We&apos;ve shipped across enough industries to know what works and what&apos;s
+            a demo that dies in production.
           </p>
           <p>
             If you need it working by next month,{' '}
