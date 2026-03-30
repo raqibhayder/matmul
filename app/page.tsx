@@ -99,7 +99,7 @@ export default function Home() {
             <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span className="labs-glow">labs</span></span>
           </div>
           <nav style={{ fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-mid)', textTransform: 'uppercase' as const }}>
-            SF / NY / Toronto / London / Dubai
+            SF / NY / Toronto / London
           </nav>
         </div>
       </header>
@@ -127,7 +127,7 @@ export default function Home() {
             {[
               ['What', 'Applied AI lab'],
               ['Team', 'Domain experts + craft-obsessed engineers, no sales team'],
-              ['Availability', <>3-4 projects a year. <a href="mailto:hello@matmul.io" className="link-accent">Reach out</a>.</>],
+              ['Availability', <>A handful of projects a year. <a href="mailto:hello@matmul.io" className="link-accent">hello@matmul.io</a></>],
             ].map(([key, value], i) => (
               <div key={i} className="flex" style={{ gap: '1.5rem', lineHeight: 1.85 }}>
                 <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>{key}</span>
@@ -163,8 +163,9 @@ export default function Home() {
           <div style={{ maxWidth: '40rem', display: 'flex', flexDirection: 'column' as const, gap: '2.5rem', fontSize: '16px' }}>
             <p style={{ color: 'var(--text)', opacity: 0.75 }}>
               <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" className="link-accent" style={{ fontVariantNumeric: 'tabular-nums' }}>95% of enterprises</a>{' '}get
-              zero return on their AI investment. The models aren&apos;t the problem.
-              Nobody studied the work. 
+              zero return on their AI investment. The models can reason, extract,
+              and decide. But the work is ambiguous, fragmented, and full of edge
+              cases. The gap between the two is where the investment dies.
             </p>
             <p style={{ color: 'var(--text)', opacity: 0.75 }}>
               Every role is a mix of{' '}
@@ -174,9 +175,10 @@ export default function Home() {
             </p>
             <p style={{ color: 'var(--text)', opacity: 0.75 }}>
               External partnerships reach production at{' '}
-              <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" className="link-accent">2x the rate</a> of
-              internal builds. We exist for that reason. Building AI that fits
-              your process is a different skill than building the rest of your product.
+              <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" className="link-accent">2x the rate </a> of
+              internal builds. We&apos;ve done it enough times to know why.
+              Building AI that fits your process is a different skill than
+              building the rest of your product.
             </p>
             <p style={{ color: 'var(--text)', opacity: 0.75 }}>
               If it can&apos;t be done reliably, we&apos;ll tell you.
@@ -243,9 +245,9 @@ export default function Home() {
                 <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--accent)' }}>PRINCIPAL</span>
               </div>
               <div style={{ fontSize: '14px', lineHeight: 2, color: 'var(--text)', opacity: 0.75, flex: 1 }}>
-                Hardware at Apple, GM, and Tesla. ML and data at Neuron,
-                working with surgeons on post-operative care. Now building
-                autonomous revenue cycle management.
+                Built hardware at Apple, GM, and Tesla. Led data at
+                Neuron. Then healthcare, building AI alongside surgeons
+                and automating how hospitals get paid.
               </div>
               <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span className="uwaterloo-badge">UWaterloo</span>
@@ -260,9 +262,9 @@ export default function Home() {
                 <span style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'var(--accent)' }}>PRINCIPAL</span>
               </div>
               <div style={{ fontSize: '14px', lineHeight: 2, color: 'var(--text)', opacity: 0.75, flex: 1 }}>
-                Founding product engineer. Previously designed cranial
-                reconstruction implants for neurosurgeons. Now building
-                an autonomous pharmacy.
+                Designed skull implants for neurosurgeons, then built a
+                platform that fights diabetes. Shipped a learning system
+                along the way. Now building an autonomous pharmacy.
               </div>
               <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 <span className="uwaterloo-badge">UWaterloo</span>
