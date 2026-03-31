@@ -280,9 +280,15 @@ export default function Home() {
         <section id="contact" className="page-pad" style={{ paddingBottom: '4rem' }}>
           <div style={{ maxWidth: '32rem' }}>
             <div className="section-label" style={{ marginBottom: '1.5rem' }}>SAY HELLO</div>
-            <a href="mailto:hello@matmul.io" className="float link-accent" style={{ fontSize: '20px' }}>
-              hello@matmul.io
-            </a>
+            <div style={{ display: 'flex', flexWrap: 'wrap' as const, alignItems: 'baseline', gap: '0.75rem' }}>
+              <a href="mailto:hello@matmul.io" className="float link-accent" style={{ fontSize: '20px' }}>
+                hello@matmul.io
+              </a>
+              <span style={{ color: 'var(--text-dim)', fontSize: '14px' }}>or</span>
+              <a href="https://cal.com/raqib/30" className="float link-accent" style={{ fontSize: '20px' }}>
+                book a call
+              </a>
+            </div>
             <div style={{ fontSize: '12px', lineHeight: 2, marginTop: '1rem', color: 'var(--text-mid)' }}>
               We reply within 48 hours. Usually faster.
             </div>
