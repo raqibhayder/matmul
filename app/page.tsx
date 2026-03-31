@@ -127,7 +127,7 @@ export default function Home() {
             {[
               ['What', 'Applied AI lab'],
               ['Team', 'Domain experts + craft-obsessed engineers, no sales team'],
-              ['Availability', <>A handful of projects a year. <a href="mailto:hello@matmul.io" className="link-accent">hello@matmul.io</a></>],
+              ['Availability', <>A handful of projects a year. <a href="https://cal.com/raqib/30" className="link-accent">Book a call</a></>],
             ].map(([key, value], i) => (
               <div key={i} className="flex" style={{ gap: '1.5rem', lineHeight: 1.85 }}>
                 <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>{key}</span>
