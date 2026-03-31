@@ -108,6 +108,14 @@ export default function Home() {
 
         {/* ── Hero ────────────────────────────────── */}
         <section className="page-pad reveal" style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
+          <p style={{
+            fontSize: '14px',
+            color: 'var(--text)',
+            opacity: 0.5,
+            marginBottom: '0.75rem',
+          }}>
+            Production AI for complex industries.
+          </p>
           <h1 style={{
             fontSize: 'clamp(1.8rem, 3.8vw, 3rem)',
             lineHeight: 1.4,
@@ -115,7 +123,7 @@ export default function Home() {
             color: 'var(--accent)',
             textWrap: 'balance',
           }}>
-            The reason most AI fails isn&apos;t the model. It&apos;s that nobody asked whether this was something AI was ever going to be good at.
+            We automate the work that&apos;s eating your team&apos;s week.
           </h1>
         </section>
 
