@@ -131,19 +131,19 @@ export default function Home() {
           className="page-pad reveal reveal-d2 pb-10 sm:pb-20"
           style={{ fontSize: '14px' }}
         >
-          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.75rem' }}>
+          <div className="flex flex-col gap-4 sm:gap-3">
             {[
               ['What', 'Applied AI lab'],
               ['Team', 'Domain experts + craft-obsessed engineers, no sales team'],
               ['Availability', <>A handful of projects a year. <a href="https://cal.com/raqib/30" className="link-accent">Book a call</a></>],
             ].map(([key, value], i) => (
-              <div key={i} className="flex gap-3 sm:gap-6" style={{ lineHeight: 1.85 }}>
-                <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>{key}</span>
+              <div key={i} className="flex flex-col sm:flex-row gap-0.5 sm:gap-6" style={{ lineHeight: 1.85 }}>
+                <span className="sm:w-28 shrink-0" style={{ color: 'var(--text-dim)' }}>{key}</span>
                 <span style={{ color: 'var(--text)', opacity: 0.7 }}>{value}</span>
               </div>
             ))}
-            <div className="flex gap-3 sm:gap-6" style={{ lineHeight: 1.85 }}>
-              <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>Industries</span>
+            <div className="flex flex-col sm:flex-row gap-0.5 sm:gap-6" style={{ lineHeight: 1.85 }}>
+              <span className="sm:w-28 shrink-0" style={{ color: 'var(--text-dim)' }}>Industries</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.25rem' }}>
                 <div className="flex flex-wrap" style={{ gap: '0' }}>
                   {['Accounting', 'Agriculture', 'Construction', 'Enterprise SaaS'].map((ind, i, arr) => (
