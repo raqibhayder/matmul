@@ -331,6 +331,15 @@ body {
   background: var(--border);
 }
 
+/* ── Mobile adjustments ──────────────────── */
+
+@media (max-width: 639px) {
+  .page-pad {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
 /* ── Reduced motion ───────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {

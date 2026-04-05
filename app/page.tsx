@@ -98,7 +98,7 @@ export default function Home() {
             </div>
             <span style={{ fontSize: '18px', letterSpacing: '0.06em' }}>matmul <span className="labs-glow">labs</span></span>
           </div>
-          <nav style={{ fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-mid)', textTransform: 'uppercase' as const }}>
+          <nav className="hidden sm:block" style={{ fontSize: '12px', letterSpacing: '0.2em', color: 'var(--text-mid)', textTransform: 'uppercase' as const }}>
             SF / NY / Toronto / London
           </nav>
         </div>
@@ -107,7 +107,7 @@ export default function Home() {
       <main className="relative z-10">
 
         {/* ── Hero ────────────────────────────────── */}
-        <section className="page-pad reveal" style={{ paddingTop: '10rem', paddingBottom: '6rem' }}>
+        <section className="page-pad reveal pt-24 sm:pt-40 pb-12 sm:pb-24">
           <p style={{
             fontSize: '14px',
             color: 'var(--text)',
@@ -128,8 +128,8 @@ export default function Home() {
         </section>
 
         <section
-          className="page-pad reveal reveal-d2"
-          style={{ paddingBottom: '5rem', fontSize: '14px' }}
+          className="page-pad reveal reveal-d2 pb-10 sm:pb-20"
+          style={{ fontSize: '14px' }}
         >
           <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.75rem' }}>
             {[
@@ -137,12 +137,12 @@ export default function Home() {
               ['Team', 'Domain experts + craft-obsessed engineers, no sales team'],
               ['Availability', <>A handful of projects a year. <a href="https://cal.com/raqib/30" className="link-accent">Book a call</a></>],
             ].map(([key, value], i) => (
-              <div key={i} className="flex" style={{ gap: '1.5rem', lineHeight: 1.85 }}>
+              <div key={i} className="flex gap-3 sm:gap-6" style={{ lineHeight: 1.85 }}>
                 <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>{key}</span>
                 <span style={{ color: 'var(--text)', opacity: 0.7 }}>{value}</span>
               </div>
             ))}
-            <div className="flex" style={{ gap: '1.5rem', lineHeight: 1.85 }}>
+            <div className="flex gap-3 sm:gap-6" style={{ lineHeight: 1.85 }}>
               <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '7rem' }}>Industries</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.25rem' }}>
                 <div className="flex flex-wrap" style={{ gap: '0' }}>
@@ -165,10 +165,10 @@ export default function Home() {
         </section>
 
         {/* ── Opinions ───────────────────────────── */}
-        <section className="page-pad reveal reveal-d3" style={{ paddingBottom: '5rem' }}>
+        <section className="page-pad reveal reveal-d3 pb-12 sm:pb-20">
           <div className="section-label" style={{ marginBottom: '2.5rem' }}>HOW WE WORK</div>
 
-          <div style={{ maxWidth: '40rem', display: 'flex', flexDirection: 'column' as const, gap: '2.5rem', fontSize: '16px' }}>
+          <div className="flex flex-col gap-6 sm:gap-10" style={{ maxWidth: '40rem', fontSize: '16px' }}>
             <p style={{ color: 'var(--text)', opacity: 0.75 }}>
               <a href="https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf" className="link-accent" style={{ fontVariantNumeric: 'tabular-nums' }}>95% of enterprises</a>{' '}get
               zero return on their AI investment. The models can reason, extract,
@@ -197,7 +197,7 @@ export default function Home() {
         </section>
 
         {/* ── Work ────────────────────────────────── */}
-        <section className="page-pad" style={{ paddingBottom: '5rem' }}>
+        <section className="page-pad pb-12 sm:pb-20">
           <div className="section-label" style={{ marginBottom: '2rem' }}>RECENT WORK</div>
 
           <div>
@@ -216,7 +216,12 @@ export default function Home() {
                     {item.num}
                   </span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: '18px' }}>{item.scope}</div>
+                    <div className="flex justify-between items-baseline flex-wrap" style={{ gap: '0.25rem 1rem' }}>
+                      <span style={{ fontSize: '18px' }}>{item.scope}</span>
+                      <span style={{ fontWeight: 700, color: 'var(--accent)', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }} className="text-base">
+                        {item.impact}
+                      </span>
+                    </div>
                     <div className="flex flex-wrap items-baseline" style={{ gap: '0.5rem', marginTop: '4px' }}>
                       {item.client && (
                         <span style={{ fontSize: '13px', color: 'var(--text-dim)' }}>{item.client}</span>
@@ -229,9 +234,6 @@ export default function Home() {
                       )}
                     </div>
                   </div>
-                  <span style={{ fontSize: '16px', fontWeight: 700, color: 'var(--accent)', flexShrink: 0, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>
-                    {item.impact}
-                  </span>
                 </div>
               </div>
             ))}
@@ -243,7 +245,7 @@ export default function Home() {
         </section>
 
         {/* ── Team ────────────────────────────────── */}
-        <section className="page-pad" style={{ paddingBottom: '5rem' }}>
+        <section className="page-pad pb-12 sm:pb-20">
           <div className="section-label" style={{ marginBottom: '2rem' }}>WHO YOU&apos;LL ACTUALLY TALK TO</div>
 
           <div className="grid md:grid-cols-2" style={{ gap: '1.5rem', maxWidth: '52rem' }}>
@@ -285,7 +287,7 @@ export default function Home() {
         </section>
 
         {/* ── Contact ─────────────────────────────── */}
-        <section id="contact" className="page-pad" style={{ paddingBottom: '4rem' }}>
+        <section id="contact" className="page-pad pb-8 sm:pb-16">
           <div style={{ maxWidth: '32rem' }}>
             <div className="section-label" style={{ marginBottom: '1.5rem' }}>SAY HELLO</div>
             <div style={{ display: 'flex', flexWrap: 'wrap' as const, alignItems: 'baseline', gap: '0.75rem' }}>
