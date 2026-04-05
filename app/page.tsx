@@ -138,12 +138,12 @@ export default function Home() {
               ['Availability', <>A handful of projects a year.<br className="sm:hidden" /><span className="hidden sm:inline"> </span><a href="https://cal.com/raqib/30" className="link-accent">Book a call</a></>],
             ].map(([key, value], i) => (
               <div key={i} className="flex gap-3 sm:gap-6" style={{ lineHeight: 1.85 }}>
-                <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '5.5rem' }} className="sm:w-28">{key}</span>
+                <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '5.5rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '12px' }} className="sm:w-28">{key}</span>
                 <span style={{ color: 'var(--text)', opacity: 0.7 }}>{value}</span>
               </div>
             ))}
             <div className="flex gap-3 sm:gap-6" style={{ lineHeight: 1.85 }}>
-              <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '5.5rem' }} className="sm:w-28">Industries</span>
+              <span style={{ color: 'var(--text-dim)', flexShrink: 0, width: '5.5rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '12px' }} className="sm:w-28">Industries</span>
               <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.25rem' }}>
                 <div className="flex flex-wrap" style={{ gap: '0' }}>
                   {['Accounting', 'Agriculture', 'Construction', 'Enterprise SaaS'].map((ind, i, arr) => (
